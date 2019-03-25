@@ -1,5 +1,7 @@
 package businessLogic;
 
+import java.util.ArrayList;
+
 public class User {
 
     private int id;
@@ -7,7 +9,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String address;
-
+    private Account a;
 
     //id does not change
     //do not keep track of birth dates and ages for now
@@ -21,7 +23,6 @@ public class User {
     public int getAge() {
         return age;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -46,7 +47,6 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-
     //constructor
 
     public User(int id, int age, String firstName, String lastName, String address) {
@@ -56,4 +56,14 @@ public class User {
         this.lastName = lastName;
         this.address = address;
     }
+
+    public void createAccount(String user, String pass, String payOption, String cashOnly){
+        this.a = new Account();
+        a.setUsername(user);
+        a.setPassword(pass);
+        a.choosePaymentPlan(payOption,cashOnly);
+    }
+
+
+
 }

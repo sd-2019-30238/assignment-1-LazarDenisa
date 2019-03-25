@@ -6,6 +6,8 @@ public class Book {
     private String title;
     private String author;
     private String genre;
+    private boolean availability;
+    private String releaseDate; // something like "11/01/2007"
 
     //there is no reason for a book to change its isbn, title, author, genre
     //so that is why setters do not exist
@@ -26,10 +28,23 @@ public class Book {
         return genre;
     }
 
-    public Book(int isbn, String title, String author, String genre) {
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public boolean isAvailable() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+    
+    public Book(int isbn, String title, String author, String genre, boolean availability) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.genre = genre;
+        this.availability=availability;
     }
 }
