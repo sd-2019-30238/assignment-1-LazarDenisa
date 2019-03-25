@@ -1,0 +1,11 @@
+package presentationLayer;
+
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Controller c = new Controller(new Welcome());
+    }
+}
