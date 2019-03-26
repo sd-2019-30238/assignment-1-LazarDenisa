@@ -10,11 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 
-public class LogInStaff extends JDialog {
+public class LogIn extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -25,7 +25,7 @@ public class LogInStaff extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			LogInStaff dialog = new LogInStaff();
+			LogIn dialog = new LogIn();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -36,53 +36,53 @@ public class LogInStaff extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public LogInStaff() {
-		setTitle("Staff log in ");
-		setBounds(100, 100, 1000, 525);
+	public LogIn() {
+		setTitle("Log in ");
+		setBounds(100, 100, 1015, 554);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(153, 102, 153));
+		contentPanel.setBackground(new Color(153, 204, 153));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblStaffLogIn = new JLabel("    Log in staff");
-			lblStaffLogIn.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-			lblStaffLogIn.setBounds(380, 47, 187, 52);
-			contentPanel.add(lblStaffLogIn);
-		}
-		{
-			JLabel lblNewLabel = new JLabel("   StaffName");
-			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-			lblNewLabel.setBounds(199, 138, 111, 25);
+			JLabel lblNewLabel = new JLabel("   Log in ");
+			lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+			lblNewLabel.setBounds(411, 28, 127, 36);
 			contentPanel.add(lblNewLabel);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Password");
+			JLabel lblNewLabel_1 = new JLabel("   Username");
 			lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-			lblNewLabel_1.setBounds(211, 227, 99, 19);
+			lblNewLabel_1.setBounds(151, 153, 161, 25);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
+			JLabel lblNewLabel_2 = new JLabel("     Password");
+			lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			lblNewLabel_2.setBounds(145, 271, 120, 16);
+			contentPanel.add(lblNewLabel_2);
+		}
+		{
 			textField = new JTextField();
-			textField.setBounds(380, 141, 220, 22);
+			textField.setBounds(369, 156, 254, 22);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 		}
 		{
 			textField_1 = new JTextField();
-			textField_1.setBounds(380, 227, 220, 22);
+			textField_1.setBounds(369, 270, 254, 22);
 			contentPanel.add(textField_1);
 			textField_1.setColumns(10);
 		}
 		{
-			JButton btnLogInStaff = new JButton("Log in staff");
-			btnLogInStaff.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-			btnLogInStaff.addActionListener(new ActionListener() {
+			JButton btnNewButton = new JButton("Log in ");
+			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			btnLogInStaff.setBounds(431, 401, 136, 25);
-			contentPanel.add(btnLogInStaff);
+			btnNewButton.setBounds(424, 445, 97, 25);
+			contentPanel.add(btnNewButton);
 		}
 	}
 

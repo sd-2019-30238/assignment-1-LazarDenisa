@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Account {
 
 
+    private int idAccount;
     private String username;
     private String password;
     private PaymentPlan payPlan;
@@ -14,12 +15,14 @@ public class Account {
     private Library l;
     Staff s;
 
-    public Account(String username, String password) {
+    public Account(int id, String username, String password) {
+        this.idAccount = id;
         this.username = username;
         this.password = password;
     }
 
     public Account(){
+        this.idAccount = 0;
         this.username="";
         this.password="";
     }
@@ -42,6 +45,14 @@ public class Account {
 
     public PaymentPlan getPayPlan() {
         return payPlan;
+    }
+
+    public int getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(int idAccount) {
+        this.idAccount = idAccount;
     }
 
     public ArrayList<Book> getBorrowedBooks() {

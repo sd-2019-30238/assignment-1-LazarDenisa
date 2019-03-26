@@ -57,8 +57,9 @@ public class User {
         this.address = address;
     }
 
-    public void createAccount(String user, String pass, String payOption, String cashOnly){
+    public void createAccount(int idAcc, String user, String pass, String payOption, String cashOnly){
         this.a = new Account();
+        a.setIdAccount(id);
         a.setUsername(user);
         a.setPassword(pass);
         a.choosePaymentPlan(payOption,cashOnly);
