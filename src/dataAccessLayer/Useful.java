@@ -1,4 +1,4 @@
-package databseLayer;
+package dataAccessLayer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

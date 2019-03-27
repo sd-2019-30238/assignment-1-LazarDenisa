@@ -1,4 +1,4 @@
-package assignment1gui;
+package presentationLayer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -23,7 +23,7 @@ public class FilterLibrary extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void showFilterLib() {
 		try {
 			FilterLibrary dialog = new FilterLibrary();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

@@ -1,4 +1,4 @@
-package assignment1gui;
+package presentationLayer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Recommendations extends JDialog {
 
@@ -20,7 +22,7 @@ public class Recommendations extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void showRecommendationsPage() {
 		try {
 			Recommendations dialog = new Recommendations();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -62,6 +64,12 @@ public class Recommendations extends JDialog {
 		{
 			JButton btnGetRecommendations = new JButton("Get recommendations");
 			btnGetRecommendations.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnGetRecommendations.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String criterion = textField.getText();
+				}
+			});
 			btnGetRecommendations.setBounds(112, 221, 243, 25);
 			contentPanel.add(btnGetRecommendations);
 		}

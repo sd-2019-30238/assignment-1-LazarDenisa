@@ -1,7 +1,6 @@
-package assignment1gui;
+package presentationLayer;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,7 +13,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LogIn extends JDialog {
+public class LogInUser extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -23,9 +22,9 @@ public class LogIn extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void showLogIn() {
 		try {
-			LogIn dialog = new LogIn();
+			LogInUser dialog = new LogInUser();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -36,7 +35,7 @@ public class LogIn extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public LogIn() {
+	public LogInUser() {
 		setTitle("Log in ");
 		setBounds(100, 100, 1015, 554);
 		getContentPane().setLayout(new BorderLayout());
@@ -62,13 +61,13 @@ public class LogIn extends JDialog {
 			lblNewLabel_2.setBounds(145, 271, 120, 16);
 			contentPanel.add(lblNewLabel_2);
 		}
-		{
+		{//user
 			textField = new JTextField();
 			textField.setBounds(369, 156, 254, 22);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 		}
-		{
+		{//pass
 			textField_1 = new JTextField();
 			textField_1.setBounds(369, 270, 254, 22);
 			contentPanel.add(textField_1);
@@ -79,6 +78,15 @@ public class LogIn extends JDialog {
 			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+
+				    //CHECK USERNAME AND PASSWORD, and if they are correct take user to next page
+                    String u = textField.getText();
+                    String p = textField_1.getText();
+
+                    AfterLogInSignUp alsu = new AfterLogInSignUp();
+                    alsu.showAfter();
+
+
 				}
 			});
 			btnNewButton.setBounds(424, 445, 97, 25);

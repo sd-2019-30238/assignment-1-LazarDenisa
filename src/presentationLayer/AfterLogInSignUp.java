@@ -1,4 +1,4 @@
-package assignment1gui;
+package presentationLayer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -20,7 +20,7 @@ public class AfterLogInSignUp extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void showAfter() {
 		try {
 			AfterLogInSignUp dialog = new AfterLogInSignUp();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -47,45 +47,73 @@ public class AfterLogInSignUp extends JDialog {
 			lblWhatDoYou.setBounds(301, 49, 385, 65);
 			contentPanel.add(lblWhatDoYou);
 		}
-		{
+
+		{ //BORROW A BOOK
 			JButton btnNewButton = new JButton("Borrow a book");
 			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton.addActionListener(new ActionListener() {
+                @Override
 				public void actionPerformed(ActionEvent e) {
+					BorrowBookGui borrow = new BorrowBookGui();
+					borrow.showBorrowPage();
 				}
 			});
 			btnNewButton.setBounds(413, 175, 162, 25);
 			contentPanel.add(btnNewButton);
 		}
-		{
+
+		{// RETURN A BOOK
 			JButton btnNewButton_1 = new JButton("Return a book");
 			btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton_1.addActionListener(new ActionListener() {
+                @Override
 				public void actionPerformed(ActionEvent e) {
+                    ReturnBookGui returnBook = new ReturnBookGui();
+                    returnBook.showReturnPage();
 				}
 			});
 			btnNewButton_1.setBounds(413, 228, 162, 25);
 			contentPanel.add(btnNewButton_1);
 		}
-		{
+
+		{//VIEW BORROW HISTORY
 			JButton btnViewBorrowHistory = new JButton("View borrow history");
 			btnViewBorrowHistory.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnViewBorrowHistory.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    ViewBorrowHistory borrowHistory = new ViewBorrowHistory();
+                    borrowHistory.showBorrowHistPage();
+                }
+            });
 			btnViewBorrowHistory.setBounds(399, 284, 217, 25);
 			contentPanel.add(btnViewBorrowHistory);
 		}
-		{
+
+		{//GET RECOMMENDATIONS
 			JButton btnGetRe = new JButton("Get Recommendations");
 			btnGetRe.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnGetRe.addActionListener(new ActionListener() {
+                @Override
 				public void actionPerformed(ActionEvent e) {
+                    Recommendations recs = new Recommendations();
+                    recs.showRecommendationsPage();
 				}
 			});
-			btnGetRe.setBounds(399, 342, 217, 25);
+			btnGetRe.setBounds(399, 342, 280, 25);
 			contentPanel.add(btnGetRe);
 		}
-		{
+
+		{//CHOOSE PAYMENT PLAN
 			JButton btnChoosePaymentPlan = new JButton("Choose payment plan");
 			btnChoosePaymentPlan.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnChoosePaymentPlan.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ChoosePaymentGui pay = new ChoosePaymentGui();
+                    pay.showPaymentsPage();
+                }
+            });
 			btnChoosePaymentPlan.setBounds(399, 392, 213, 25);
 			contentPanel.add(btnChoosePaymentPlan);
 		}

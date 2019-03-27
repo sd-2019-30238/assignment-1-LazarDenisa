@@ -1,4 +1,5 @@
-package assignment1gui;
+package presentationLayer;
+
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,7 +19,7 @@ public class ReturnBookGui extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void showReturnPage() {
 		try {
 			ReturnBookGui dialog = new ReturnBookGui();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
