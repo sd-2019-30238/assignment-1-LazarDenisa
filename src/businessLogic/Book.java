@@ -40,11 +40,17 @@ public class Book {
         this.availability = availability;
     }
     
-    public Book(int isbn, String title, String author, String genre, boolean availability) {
+    public Book(int isbn, String title, String author, String genre, boolean availability, String releaseDate) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.availability=availability;
+        this.releaseDate = releaseDate;
+    }
+
+    public Book(String title, String author){
+        this.title=title;
+        this.author=author;
     }
 }

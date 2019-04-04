@@ -8,24 +8,12 @@ public class RecommendationFactory {
             return null;
         }
 
-        if(criterion.equalsIgnoreCase("NOVEL")){
-            return new NovelRecommendation();
+        if(criterion.equalsIgnoreCase("AUTHOR")){
+            return new RecommendationByAuthor();
         }
 
-        if(criterion.equalsIgnoreCase("ROMANCE")){
-            return new RomanceRecommendation();
-        }
-
-        if(criterion.equalsIgnoreCase("SF")){
-            return new SFRecommendation();
-        }
-
-        if(criterion.equalsIgnoreCase("LIFESTYLE")){
-            return new LifestyleRecommendation();
-        }
-
-        if(criterion.equalsIgnoreCase("SPIRITUALITY")){
-            return new SpiritualityRecommendation();
+        if(criterion.equalsIgnoreCase("GENRE")){
+            return new RecommendationByGenre();
         }
 
         return null;

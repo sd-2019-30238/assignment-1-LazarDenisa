@@ -1,4 +1,6 @@
 package dataAccessLayer;
 
-public class UserDAO extends AbstractDAO {
+import businessLogic.User;
+
+public class UserDAO  {
 }

@@ -71,6 +71,7 @@ public class ChoosePaymentGui extends JDialog {
 			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+
 				}
 			});
 			btnNewButton.setBounds(66, 445, 235, 25);

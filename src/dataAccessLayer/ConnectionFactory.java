@@ -6,13 +6,17 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static final String USER = "denisalazar";
-    private static final String PASSWORD = "vrWALObk2Za7DIyH";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
     private static final String CONN="jdbc:mysql://localhost/assignment1";
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(CONN,USER,PASSWORD);
-
+    public static Connection getConnection() throws SQLException{
+        try{
+            return DriverManager.getConnection(CONN,USER,PASSWORD);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

@@ -57,6 +57,11 @@ public class User {
         this.address = address;
     }
 
+    public User(String firstName, String lastName){
+        this.firstName=firstName;
+        this.lastName=lastName;
+    }
+
     public void createAccount(int idAcc, String user, String pass, String payOption, String cashOnly){
         this.a = new Account();
         a.setIdAccount(id);

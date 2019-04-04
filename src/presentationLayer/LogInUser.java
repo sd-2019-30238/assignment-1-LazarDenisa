@@ -1,5 +1,8 @@
 package presentationLayer;
 
+import businessLogic.User;
+import dataAccessLayer.ConnectionFactory;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
@@ -12,12 +15,18 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LogInUser extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
+	private ArrayList<User> loggedInUsers = new ArrayList<User>();
 
 	/**
 	 * Launch the application.
@@ -80,18 +89,37 @@ public class LogInUser extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 
 				    //CHECK USERNAME AND PASSWORD, and if they are correct take user to next page
-                    String u = textField.getText();
-                    String p = textField_1.getText();
-
-                    AfterLogInSignUp alsu = new AfterLogInSignUp();
-                    alsu.showAfter();
 
 
+                    String logQuery = "SELECT * FROM accounts WHERE username=? and password=?";
+                    Connection conn=null;
+                    PreparedStatement ps = null;
+                    ResultSet rs = null;
+
+                    try{
+                        conn = ConnectionFactory.getConnection();
+                        ps = conn.prepareStatement(logQuery);
+                        ps.setString(1,textField.getText());
+                        ps.setString(2,textField_1.getText());
+                        rs = ps.executeQuery();
+                        if(rs.next()){
+                            AfterLogInSignUp alsu = new AfterLogInSignUp();
+                            alsu.showAfter();
+                            User u = new User(textField.getText(),textField_1.getText());
+                            loggedInUsers.add(u);
+                        }
+                    }catch(SQLException exception){
+                        exception.printStackTrace();
+                    }
 				}
 			});
 			btnNewButton.setBounds(424, 445, 97, 25);
 			contentPanel.add(btnNewButton);
 		}
 	}
+
+	public ArrayList<User> getLoggedInUsers(){
+	    return this.loggedInUsers;
+    }
 
 }

@@ -1,5 +1,7 @@
 package presentationLayer;
 
+import dataAccessLayer.ConnectionFactory;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -13,6 +15,10 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LogInStaff extends JDialog {
 
@@ -88,6 +94,26 @@ public class LogInStaff extends JDialog {
 					String passwordStaff = textField_1.getText();
 					AfterLogStaff als = new AfterLogStaff();
 					als.showAfterLogStaffPage();
+
+
+					String logQuery = "SELECT * FROM staff_accounts WHERE userstaff=? and passstaff=?";
+					Connection conn=null;
+					PreparedStatement ps = null;
+					ResultSet rs = null;
+
+					try{
+						conn = ConnectionFactory.getConnection();
+						ps = conn.prepareStatement(logQuery);
+						ps.setString(1,textField.getText());
+						ps.setString(2,textField_1.getText());
+						rs = ps.executeQuery();
+						if(rs.next()){
+							AfterLogStaff alstaff = new AfterLogStaff();
+							alstaff.showAfterLogStaffPage();
+						}
+					}catch(SQLException exception){
+						exception.printStackTrace();
+					}
 				}
 			});
 			btnLogInStaff.setBounds(431, 401, 136, 25);

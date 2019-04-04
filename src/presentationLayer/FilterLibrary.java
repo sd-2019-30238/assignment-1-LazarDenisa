@@ -1,5 +1,7 @@
 package presentationLayer;
 
+import dataAccessLayer.BookDAO;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -11,6 +13,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class FilterLibrary extends JDialog {
 
@@ -20,9 +25,7 @@ public class FilterLibrary extends JDialog {
 	private JTextField textField_2;
 	private JTextField textField_3;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void showFilterLib() {
 		try {
 			FilterLibrary dialog = new FilterLibrary();
@@ -36,7 +39,7 @@ public class FilterLibrary extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public FilterLibrary() {
+	public FilterLibrary()  {
 		setTitle("Filter books ");
 		setBounds(100, 100, 998, 540);
 		getContentPane().setLayout(new BorderLayout());
@@ -78,21 +81,77 @@ public class FilterLibrary extends JDialog {
 			JButton btnNewButton = new JButton("Filter by genre");
 			btnNewButton.setBounds(219, 123, 143, 25);
 			contentPanel.add(btnNewButton);
-		}
+            btnNewButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    BookDAO bDAO = new BookDAO();
+                    try{
+                        String s = bDAO.filterByGenre(textField.getText());
+                        System.out.println(s);
+                    }catch(SQLException e){
+                        System.out.println("Result not found");
+                    }
+
+                }
+            });
+
+
+        }
+
+
 		{
 			JButton btnNewButton_1 = new JButton("Filter by author");
 			btnNewButton_1.setBounds(219, 200, 143, 25);
 			contentPanel.add(btnNewButton_1);
+            btnNewButton_1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    BookDAO bDAO = new BookDAO();
+                    try{
+                        String s = bDAO.filterByAuthor(textField_1.getText());
+                        System.out.println(s);
+                    }catch(SQLException e){
+                        System.out.println("Result not found");
+                    }
+
+                }
+            });
 		}
 		{
 			JButton btnNewButton_2 = new JButton("Filter by title");
 			btnNewButton_2.setBounds(219, 281, 143, 25);
 			contentPanel.add(btnNewButton_2);
+            btnNewButton_2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    BookDAO bDAO = new BookDAO();
+                    try{
+                        String s = bDAO.filterByTitle(textField_2.getText());
+                        System.out.println(s);
+                    }catch(SQLException e){
+                        System.out.println("Result not found");
+                    }
+
+                }
+            });
 		}
 		{
 			JButton btnFilterByDate = new JButton("Filter by date");
 			btnFilterByDate.setBounds(219, 363, 143, 25);
 			contentPanel.add(btnFilterByDate);
+            btnFilterByDate.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    BookDAO bDAO = new BookDAO();
+                    try{
+                        String s = bDAO.filterByReleaseDate(textField_3.getText());
+                        System.out.println(s);
+                    }catch(SQLException e){
+                        System.out.println("Result not found");
+                    }
+
+                }
+            });
 		}
 	}
 

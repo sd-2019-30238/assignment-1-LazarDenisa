@@ -1,8 +1,10 @@
 package presentationLayer;
 
 
+import businessLogic.User;
+import dataAccessLayer.ConnectionFactory;
+
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +16,9 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class SignUp extends JDialog {
 
@@ -124,7 +129,45 @@ public class SignUp extends JDialog {
 					int idUser = Integer.parseInt(textField_4.getText());
 					int idAccount = Integer.parseInt(textField_5.getText());
 
+					String signUPQuery = "INSERT INTO users (id,age,first_name,last_name,id_account,address) VALUES (?,?,?,?,?,?)";
+					String newAccountQuery = "INSERT INTO accounts (id_account,username,password,pay_plan_type) VALUES (?,?,?,?)";
 
+					Connection conn=null;
+					PreparedStatement ps = null;
+					PreparedStatement ps2 = null;
+
+					try{
+						conn = ConnectionFactory.getConnection();
+						ps = conn.prepareStatement(signUPQuery);
+						ps.setString(1,String.valueOf(idUser));
+						ps.setString(2,String.valueOf(age));
+						ps.setString(3,firstName);
+						ps.setString(4,lastName);
+						ps.setString(5,String.valueOf(idAccount));
+						ps.setString(6,address);
+
+						ps2=conn.prepareStatement(newAccountQuery);
+						ps2.setString(1,String.valueOf(idAccount));
+						ps2.setString(2,firstName+lastName);
+						ps2.setString(3,firstName+100);
+						ps2.setString(4,"");
+						int update = ps.executeUpdate();
+						int updateAccount = ps2.executeUpdate();
+						if(update!=0&&updateAccount!=0){
+							AfterLogInSignUp alsu = new AfterLogInSignUp();
+							alsu.showAfter();
+
+							User u = new User(firstName,lastName);
+							LogInUser logged = new LogInUser();
+							logged.getLoggedInUsers().add(u);
+							for(User user : logged.getLoggedInUsers()){
+                                System.out.println(firstName+lastName);
+                            }
+
+						}
+					}catch(SQLException exception){
+						exception.printStackTrace();
+					}
 				}
 			});
 			btnNewButton.setBounds(402, 479, 178, 25);

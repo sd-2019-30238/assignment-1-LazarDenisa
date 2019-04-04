@@ -1,5 +1,6 @@
 package businessLogic;
 
+
 public interface Recommendation {
-    void getRecommendation();
+    String getRecommendation(String s);
 }

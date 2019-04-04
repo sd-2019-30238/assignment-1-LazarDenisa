@@ -1,5 +1,8 @@
 package presentationLayer;
 
+import businessLogic.Recommendation;
+import businessLogic.RecommendationFactory;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -17,7 +20,7 @@ import java.awt.event.ActionListener;
 public class Recommendations extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField textField, textField_1;
 
 	/**
 	 * Launch the application.
@@ -50,7 +53,7 @@ public class Recommendations extends JDialog {
 			contentPanel.add(lblRecommendations);
 		}
 		{
-			JLabel lblInsertGenre = new JLabel("Insert genre");
+			JLabel lblInsertGenre = new JLabel("Insert criterion");
 			lblInsertGenre.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			lblInsertGenre.setBounds(48, 145, 187, 33);
 			contentPanel.add(lblInsertGenre);
@@ -62,12 +65,22 @@ public class Recommendations extends JDialog {
 			textField.setColumns(10);
 		}
 		{
+			textField_1 = new JTextField();
+			textField_1.setBounds(438, 152, 187, 22);
+			contentPanel.add(textField_1);
+			textField_1.setColumns(10);
+		}
+		{
 			JButton btnGetRecommendations = new JButton("Get recommendations");
 			btnGetRecommendations.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnGetRecommendations.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String criterion = textField.getText();
+						RecommendationFactory rf = new RecommendationFactory();
+						Recommendation  recommendation = rf.makeRecommendation(criterion);
+						String s = recommendation.getRecommendation(textField_1.getText());
+					System.out.println(s);
 				}
 			});
 			btnGetRecommendations.setBounds(112, 221, 243, 25);
